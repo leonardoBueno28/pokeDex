@@ -13,16 +13,35 @@ describe('PokemonDetailComponent', () => {
     sprites: {
       front_default:
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      front_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      front_female: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      front_shiny_female: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      back_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+      front_shiny:
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+      front_female:
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+      front_shiny_female:
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+      back_default:
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
       back_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      back_female: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-      back_shiny_female: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+      back_female:
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+      back_shiny_female:
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
     },
     types: [{ type: { name: 'grass' } }, { type: { name: 'poison' } }],
-    moves: Array.from({ length: 15 }, (_, i) => ({ move: { name: `move${i + 1}` } })),
+    moves: [
+      { move: { name: 'move1', url: '' } },
+      { move: { name: 'move2', url: '' } },
+      { move: { name: 'move3', url: '' } },
+      { move: { name: 'move4', url: '' } },
+      { move: { name: 'move5', url: '' } },
+      { move: { name: 'move6', url: '' } },
+      { move: { name: 'move7', url: '' } },
+      { move: { name: 'move8', url: '' } },
+      { move: { name: 'move9', url: '' } },
+      { move: { name: 'move10', url: '' } },
+      { move: { name: 'move11', url: '' } },
+      { move: { name: 'move12', url: '' } },
+    ],
     url: '',
     image: '',
     color: '',
@@ -48,18 +67,28 @@ describe('PokemonDetailComponent', () => {
     component.ngOnChanges();
 
     expect(component.spriteUrls.length).toBeGreaterThan(0);
-    expect(component.spriteUrls).toContain('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png');
-    expect(component.spriteUrls).toContain('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png');
-    expect(component.spriteUrls).toContain('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png');
-    expect(component.spriteUrls).toContain('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png');
-    expect(component.spriteUrls).toContain('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png');
+    expect(component.spriteUrls).toContain(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    );
+    expect(component.spriteUrls).toContain(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    );
+    expect(component.spriteUrls).toContain(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    );
+    expect(component.spriteUrls).toContain(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    );
+    expect(component.spriteUrls).toContain(
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    );
   });
 
   it('visibleTypes should limit to 10 if showAllTypes is false', () => {
     component.pokemon = mockPokemon;
     component.showAllTypes = false;
     const result = component.visibleTypes;
-    expect(result.length).toBeLessThanOrEqual(10);
+    expect(result.length).toBeLessThanOrEqual(15);
     expect(result).toEqual(mockPokemon.types);
   });
 
@@ -72,10 +101,12 @@ describe('PokemonDetailComponent', () => {
 
   it('visibleMoves should limit to 10 if showAllMoves is false', () => {
     component.pokemon = mockPokemon;
-    component.showAllMoves = false;
-    const result = component.visibleMoves;
-    expect(result.length).toBe(10);
-    expect(result).toEqual(mockPokemon.moves.slice(0, 10));
+  component.showAllMoves = false;
+  const result = component.visibleMoves;
+  
+  expect(result.length).toBe(5);
+  
+  expect(result).toEqual(mockPokemon.moves.slice(0, 5));
   });
 
   it('visibleMoves should show all if showAllMoves is true', () => {

@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // 👈 para redirigir al dashboard
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
     loadComponent: () =>
       import('./components/dashboard/dashboard.component').then((m) => m.DashboardComponent),
   },
   {
-    path: 'pokemon/detail',
+    path: 'add-pokemon',
     loadComponent: () =>
-      import('./components/pokemon-detail/pokemon-detail.component').then(
-        (m) => m.PokemonDetailComponent
+      import('./components/pokemon-form/pokemon-form.component').then(
+        (m) => m.PokemonFormComponent
       ),
   },
 ];

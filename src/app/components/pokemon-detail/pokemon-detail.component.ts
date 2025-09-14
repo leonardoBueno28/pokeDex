@@ -27,15 +27,15 @@ export class PokemonDetailComponent implements OnInit, OnChanges {
   }
 
   get visibleTypes() {
-    return this.showAllTypes ? this.pokemon.types : this.pokemon.types.slice(0, 10);
+    return this.showAllTypes ? this.pokemon.types : this.pokemon.types.slice(0, 5);
   }
 
   get visibleMoves() {
-    return this.showAllMoves ? this.pokemon.moves : this.pokemon.moves.slice(0, 10);
+    return this.showAllMoves ? this.pokemon.moves : this.pokemon.moves.slice(0, 5);
   }
 
   get visibleSprites() {
-    return this.showAllSprites ? this.spriteUrls : this.spriteUrls.slice(0, 10);
+    return this.showAllSprites ? this.spriteUrls : this.spriteUrls.slice(0, 5);
   }
 }
 

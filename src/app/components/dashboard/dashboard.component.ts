@@ -76,23 +76,15 @@ export class DashboardComponent implements OnInit {
       this.pokemonService.getPokemons(this.limit, 0).subscribe(
         (data) => {
           this.totalCount = data.count;
+          localStorage.setItem('totalCount', this.totalCount.toString());
           this.nextPageUrl = data.next;
           this.previousPageUrl = data.previous;
           const results = data.results;
-
-          const requests = results.map((p: any) => this.http.get(p.url));
-          forkJoin(requests).subscribe(
-            (detailedPokemons: any) => {
-              this.pokemons = detailedPokemons;
-              this.filteredPokemons = [...this.pokemons];
-              setTimeout(() => {
-                this.isLoading = false;
-              }, 1000);
-            },
-            (error) => {
-              this.isLoading = false;
-            }
-          );
+          this.pokemons = results;
+          this.filteredPokemons = [...this.pokemons];
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 1000);
         },
         (error) => {
           this.isLoading = false;

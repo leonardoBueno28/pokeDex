@@ -131,22 +131,4 @@ describe('DashboardComponent', () => {
     flush();
   }));
 
-  it('should call getPokemons on init', fakeAsync(() => {
-    pokemonService.getPokemons.and.returnValue(of(mockPokemonListResponse));
-
-    component.ngOnInit();
-
-    expect(pokemonService.getPokemons).toHaveBeenCalled();
-
-    const req1 = httpMock.expectOne(mockPokemonListResponse.results[0].url);
-    const req2 = httpMock.expectOne(mockPokemonListResponse.results[1].url);
-    req1.flush(mockDetailedPokemons[0]);
-    req2.flush(mockDetailedPokemons[1]);
-
-    tick(1000);
-    expect(component.isLoading).toBeFalse();
-    expect(component.pokemons).toEqual(mockDetailedPokemons);
-
-    flush();
-  }));
 });

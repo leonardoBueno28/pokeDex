@@ -1,0 +1,52 @@
+<form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
+  <h3>Crear Nuevo Pokémon</h3>
+
+  <div class="form-group">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="pokemonForm.get('name')?.invalid && (pokemonForm.get('name')?.dirty || pokemonForm.get('name')?.touched)" class="alert">
+      El nombre es obligatorio.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="weight">Peso (kg):</label>
+    <input type="number" id="weight" formControlName="weight" />
+    <div *ngIf="pokemonForm.get('weight')?.invalid && (pokemonForm.get('weight')?.dirty || pokemonForm.get('weight')?.touched)" class="alert">
+      El peso es obligatorio y debe ser un número positivo.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Sprites (Imágenes):</label>
+    <input type="file" multiple (change)="onFileSelected($event)" />
+    <div *ngIf="sprites.length > 0">
+      <strong>Archivos seleccionados:</strong>
+      <ul>
+        <li *ngFor="let sprite of sprites.controls">{{ sprite.value.name }}</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="form-group">
+  <label for="types">Tipos:</label>
+  <select id="types" multiple formControlName="types">
+    <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+  </select>
+  <div *ngIf="pokemonForm.get('types')?.invalid && (pokemonForm.get('types')?.dirty || pokemonForm.get('types')?.touched)" class="alert">
+    Debe seleccionar al menos un tipo.
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="moves">Movimientos:</label>
+  <select id="moves" multiple formControlName="moves">
+    <option *ngFor="let move of moves" [value]="move">{{ move }}</option>
+  </select>
+  <div *ngIf="pokemonForm.get('moves')?.invalid && (pokemonForm.get('moves')?.dirty || pokemonForm.get('moves')?.touched)" class="alert">
+    Debe seleccionar al menos un movimiento.
+  </div>
+</div>
+
+  <button type="submit" [disabled]="pokemonForm.invalid">Crear Pokémon</button>
+</form>
