@@ -1,0 +1,8 @@
+<div class="pokemon-list">
+  <pokemon-card
+    *ngFor="let p of pokemons"
+    [pokemon]="p"
+    [selected]="p === selectedPokemon"
+    (click)="select.emit(p)"
+  ></pokemon-card>
+</div>

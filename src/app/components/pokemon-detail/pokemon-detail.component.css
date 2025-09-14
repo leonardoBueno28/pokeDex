@@ -1,0 +1,56 @@
+.pokemon-details {
+  background-color: #c6c6f9;
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 280px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.detail-image img {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sprites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.sprites img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  background-color: #eee;
+  border-radius: 15px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+button {
+  margin-top: 0.5rem;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+button:hover {
+  color: darkblue;
+}
+

@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Listado de Pokemon</h2>
+
+  <div class="search-container">
+    <input type="text" placeholder="Buscar Pokémon" [formControl]="searchControl" />
+    <button
+      class="clear-btn"
+      *ngIf="searchControl.value"
+      (click)="clearSearch()"
+      aria-label="Limpiar búsqueda"
+    >
+      ✕
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="content-view">
+    <div>
+      <pokemon-list
+        *ngIf="!isLoading"
+        [pokemons]="filteredPokemons"
+        [selectedPokemon]="selectedPokemon"
+        (select)="selectPokemon($event)"
+      ></pokemon-list>
+    </div>
+
+    <div><pokemon-detail *ngIf="selectedPokemon" [pokemon]="selectedPokemon"></pokemon-detail></div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Atrás</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+</div>

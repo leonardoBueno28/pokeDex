@@ -1,0 +1,38 @@
+<div class="pokemon-details">
+  <div class="detail-image">
+    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+  </div>
+  <h3>#{{ pokemon.id }} {{ pokemon.name }}</h3>
+  <!-- Types -->
+  <p><strong>Types</strong><br /></p>
+  <div class="chip-container">
+    <span class="chip" *ngFor="let type of visibleTypes">
+      {{ type.type.name }}
+    </span>
+  </div>
+  <button *ngIf="pokemon.types.length > 20" (click)="showAllTypes = !showAllTypes">
+    {{ showAllTypes ? 'Ver menos' : 'Ver más' }}
+  </button>
+
+  <p><strong>Peso</strong><br />{{ pokemon.weight }}kg</p>
+
+  <!-- Sprites -->
+  <p><strong>Sprites</strong></p>
+  <div class="sprites">
+    <img *ngFor="let sprite of visibleSprites" [src]="sprite" />
+  </div>
+  <button *ngIf="spriteUrls.length > 20" (click)="showAllSprites = !showAllSprites">
+    {{ showAllSprites ? 'Ver menos' : 'Ver más' }}
+  </button>
+
+  <!-- Movimientos -->
+  <p><strong>Movimientos</strong></p>
+  <div class="chip-container">
+    <span class="chip" *ngFor="let move of visibleMoves">
+      {{ move.move.name }}
+    </span>
+  </div>
+  <button *ngIf="pokemon.moves.length > 20" (click)="showAllMoves = !showAllMoves">
+    {{ showAllMoves ? 'Ver menos' : 'Ver más' }}
+  </button>
+</div>
