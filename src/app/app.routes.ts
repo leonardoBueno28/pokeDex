@@ -1,9 +1,17 @@
 import { Routes } from '@angular/router';
-import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // 👈 para redirigir al dashboard
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'pokemon/:id', component: PokemonDetailComponent },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./components/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+  },
+  {
+    path: 'pokemon/detail',
+    loadComponent: () =>
+      import('./components/pokemon-detail/pokemon-detail.component').then(
+        (m) => m.PokemonDetailComponent
+      ),
+  },
 ];

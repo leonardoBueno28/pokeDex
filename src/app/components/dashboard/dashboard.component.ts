@@ -22,7 +22,6 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     PokemonDetailComponent,
     ReactiveFormsModule,
   ],
-  providers: [PokemonService],
 })
 export class DashboardComponent implements OnInit {
   constructor(private pokemonService: PokemonService, private http: HttpClient) {}
